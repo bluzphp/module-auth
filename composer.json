@@ -1,0 +1,14 @@
+{
+  "name": "bluzphp/module-auth",
+  "type": "bluz-module",
+  "license": "MIT",
+  "description": "bluz auth module",
+  "require": {
+    "bluzphp/composer-plugin": "~0.2"
+  },
+  "extra": {
+    "bluz": {
+      "module_name": "auth"
+    }
+  }
+}

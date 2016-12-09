@@ -14,7 +14,7 @@ install:
   - cd skeleton
   - vendor/bin/phinx migrate -e default
   # composer require
-  - ENV=default composer require bluzphp/module-auth
+  - BLUZ_ENV=default composer require bluzphp/module-auth
   # Newman
   - npm install -g newman@1
 script:

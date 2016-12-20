@@ -13,8 +13,8 @@ install:
   - mysql -e 'CREATE DATABASE bluz;'
   - cd skeleton
   - vendor/bin/phinx migrate -e default
-  # composer require
-  - BLUZ_ENV=default composer require bluzphp/module-auth
+  # Require current module
+  - composer require bluzphp/module-auth:dev-master
   # Newman
   - npm install -g newman@1
 script:

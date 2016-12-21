@@ -13,7 +13,7 @@ use Bluz\Proxy\Messages;
 
 /**
  * @param string $provider
- * @return \closure
+ * @return false
  */
 return function ($provider = '') {
     /**

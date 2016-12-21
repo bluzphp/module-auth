@@ -1,9 +1,11 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: yuklia
- * Date: 06.05.15
- * Time: 18:41
+ * @copyright Bluz PHP Team
+ * @link https://github.com/bluzphp/skeleton
+ */
+
+/**
+ * @namespace
  */
 namespace Application\Auth;
 

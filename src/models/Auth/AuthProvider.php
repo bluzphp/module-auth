@@ -1,25 +1,31 @@
 <?php
 /**
- * Hybrid Auth integration
- * @author yuklia <yuliakostrikova@gmail.com>
+ * @copyright Bluz PHP Team
+ * @link https://github.com/bluzphp/skeleton
+ */
+
+/**
+ * @namespace
  */
 namespace Application\Auth;
 
 use Application\Auth;
 use Application\Users;
 use Bluz\Application\Exception\ApplicationException;
+use Bluz\Auth\EntityInterface;
 use Bluz\Proxy\Config;
 use Bluz\Proxy\Messages;
 use Bluz\Proxy\Response;
 
 /**
- * Class AuthProvider
+ * Hybrid Auth integration
+ * @author yuklia <yuliakostrikova@gmail.com>
  * @package Application\Auth
  */
 class AuthProvider implements AuthInterface
 {
     /**
-     * @var \Application\Users\Row $identity
+     * @var EntityInterface $identity
      */
     protected $identity;
 
@@ -48,7 +54,6 @@ class AuthProvider implements AuthInterface
         $this->providerName = ucfirst($providerName);
     }
 
-
     /**
      * @return \Hybrid_Auth
      */
@@ -70,7 +75,7 @@ class AuthProvider implements AuthInterface
     }
 
     /**
-     * @param \Application\Users\Row $identity
+     * @param EntityInterface $identity
      */
     public function setIdentity($identity)
     {
@@ -78,7 +83,7 @@ class AuthProvider implements AuthInterface
     }
 
     /**
-     * @return \Application\Users\Row $user
+     * @return EntityInterface $user
      */
     public function getIdentity()
     {
@@ -160,7 +165,6 @@ class AuthProvider implements AuthInterface
          */
         $authTable = Auth\Table::getInstance();
         $auth = $authTable->getAuthRow(strtolower($this->providerName), $profile->identifier);
-
 
         if ($this->identity) {
             if ($auth) {

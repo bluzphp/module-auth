@@ -7,8 +7,6 @@
  */
 namespace Application;
 
-use Application\Users;
-
 /**
  * @return \closure
  */

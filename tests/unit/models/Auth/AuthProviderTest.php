@@ -13,8 +13,9 @@ use Application\Auth\AuthProvider;
 use Application\Tests\ControllerTestCase;
 
 /**
- * Class AuthProviderTest
- * @author yuklia <yuliakostrikova@gmail.com>
+ * @group   module-options
+ *
+ * @author  yuklia <yuliakostrikova@gmail.com>
  * @package Application\Tests\Auth
  */
 class AuthProviderTest extends ControllerTestCase

@@ -3,8 +3,6 @@ php:
   - 7.0
   - 7.1
 install:
-  # ImageMagick
-  #- printf "\n" | pecl install imagick
   # Composer
   - rm -rf ./*
   - composer self-update
@@ -12,25 +10,21 @@ install:
   # Database
   - mysql -e 'CREATE DATABASE bluz;'
   - cd skeleton
-  - vendor/bin/phinx migrate -e default
   # Require current module
   - composer require bluzphp/module-auth:dev-master
-  # Newman
-  - npm install -g newman@1
+  # Migrations
+  - vendor/bin/phinx migrate -e default
+  - vendor/bin/phinx seed:run
+before_script:
+  # Codeception
+  - wget http://codeception.com/codecept.phar
 script:
-  - mkdir .reports
   # Code style
   - php vendor/bin/phpcs ./application --standard=PSR1,PSR2 --encoding=utf-8 --ignore=./application/_loader.php
-  # PHPUnit tests
-  - php vendor/bin/phpunit --configuration ./phpunit.xml.dist --coverage-clover=.reports/clover.xml
   # WebServer run
   - nohup bash -c "php -S 127.0.0.1:8000 -t ./public/ ./public/routing.php 2>&1 &" && sleep 1; cat nohup.out
-  # Newman run
-  - newman -k -c tests/postman/collection.json -e tests/postman/environment.json -x -t .reports/newman.xml -O .reports/newman.log
-after_script:
-  - php vendor/bin/coveralls -v
-  - wget https://scrutinizer-ci.com/ocular.phar
-  - php ocular.phar code-coverage:upload --format=php-clover .reports/clover.xml
+  # CodeCeption
+  - php codecept.phar run -g module-auth
 notifications:
   email: false
   webhooks:

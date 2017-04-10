@@ -2,29 +2,30 @@ language: php
 php:
   - 7.0
   - 7.1
+env:
+  - BLUZ_MODULE=auth
+before_install:
+  - phpenv config-rm xdebug.ini
 install:
   # Composer
-  - rm -rf ./*
   - composer self-update
   - composer create-project bluzphp/skeleton --stability=dev
+  # Require current module
+  - cd skeleton
+  - composer require bluzphp/module-$BLUZ_MODULE:dev-$TRAVIS_BRANCH
+before_script:
   # Database
   - mysql -e 'CREATE DATABASE bluz;'
-  - cd skeleton
-  # Require current module
-  - composer require bluzphp/module-auth:dev-master
   # Migrations
-  - vendor/bin/phinx migrate -e default
-  - vendor/bin/phinx seed:run
-before_script:
-  # Codeception
-  - wget http://codeception.com/codecept.phar
+  - php vendor/bin/bluzman db:migrate
+  - php vendor/bin/bluzman db:seed:run
 script:
-  # Code style
+  # Check code style
   - php vendor/bin/phpcs ./application --standard=PSR1,PSR2 --encoding=utf-8 --ignore=./application/_loader.php
-  # WebServer run
-  - nohup bash -c "php -S 127.0.0.1:8000 -t ./public/ ./public/routing.php 2>&1 &" && sleep 1; cat nohup.out
-  # CodeCeption
-  - php codecept.phar run -g module-auth
+  # Run built-in web-server
+  - php vendor/bin/bluzman server:start --host 127.0.0.1 -b
+  # Run CodeCeption tests
+  - php vendor/bin/bluzman test module-$BLUZ_MODULE
 notifications:
   email: false
   webhooks:

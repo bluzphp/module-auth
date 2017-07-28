@@ -8,7 +8,7 @@
 namespace Application;
 
 /**
- * @return \closure
+ * @return void
  */
 return function () {
     \Hybrid_Endpoint::process();

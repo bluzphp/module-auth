@@ -4,6 +4,6 @@
   "license": "MIT",
   "description": "bluz auth module",
   "require": {
-    "bluzphp/composer-plugin": "~2.0"
+    "bluzphp/composer-plugin": "~2.1"
   }
 }

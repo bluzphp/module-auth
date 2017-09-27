@@ -12,7 +12,7 @@ install:
   - composer create-project bluzphp/skeleton --stability=dev
   # Require current module
   - cd skeleton
-  - composer require bluzphp/module-$BLUZ_MODULE:dev-$TRAVIS_BRANCH
+  - composer require bluzphp/module-$BLUZ_MODULE:dev-$TRAVIS_BRANCH --dev
 before_script:
   # Database
   - mysql -e 'CREATE DATABASE bluz;'

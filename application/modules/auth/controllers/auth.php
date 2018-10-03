@@ -22,7 +22,7 @@ return function ($provider = '') {
      */
     try {
         // Get configuration
-        $config = Config::getData('auth', 'hybrid');
+        $config = Config::get('auth', 'hybrid');
         $provider = strtolower($provider);
 
         // Check provider name

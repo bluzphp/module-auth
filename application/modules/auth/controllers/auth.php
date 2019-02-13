@@ -14,7 +14,6 @@ use Bluz\Proxy\Router;
  * @param string $provider
  *
  * @return void
- * @throws Exception
  */
 return function ($provider = '') {
     /**

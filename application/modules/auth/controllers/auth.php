@@ -14,7 +14,6 @@ use Bluz\Proxy\Router;
  * @param string $provider
  *
  * @return void
- * @throws Exception
  */
 return function ($provider = '') {
     /**
@@ -67,18 +66,15 @@ return function ($provider = '') {
                 $authRow->token = $accessToken['access_token'];
                 $authRow->save();
                 Response::redirectTo('users', 'profile');
+            } else if ($authRow) {
+                // Try to login
+                $user = Users\Table::findRow($authRow->userId);
+                Auth\Table::tryLogin($user);
+                Messages::addNotice('You are signed');
             } else {
-                // Authenticate in the application
-                if ($authRow) {
-                    // Try to login
-                    $user = Users\Table::findRow($authRow->userId);
-                    Auth\Table::tryLogin($user);
-                    Messages::addNotice('You are signed');
-                } else {
-                    // User not found
-                    Messages::addError('Not found linked profile');
-                    Response::redirectTo('users', 'signin');
-                }
+                // User not found
+                Messages::addError('Not found linked profile');
+                Response::redirectTo('users', 'signin');
             }
 
             // Disconnect the adapter
@@ -87,5 +83,5 @@ return function ($provider = '') {
     } catch (\Hybridauth\Exception\Exception $e) {
         Messages::addError($e->getMessage());
     }
-    Response::redirectTo('index', 'index');
+    Response::redirectTo('index');
 };

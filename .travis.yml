@@ -14,7 +14,7 @@ before_install:
 install:
   # Composer
   - composer self-update
-  - composer create-project bluzphp/skeleton --stability=dev
+  - composer create-project bluzphp/skeleton
   # Require current module
   - cd skeleton
   - composer require bluzphp/module-$BLUZ_MODULE:dev-$TRAVIS_BRANCH

@@ -10,8 +10,6 @@
 
 [![Scrutinizer Code Quality](https://img.shields.io/scrutinizer/g/bluzphp/module-auth.svg?style=flat)](https://scrutinizer-ci.com/g/bluzphp/module-auth/)
 
-[![Coverage Status](https://img.shields.io/coveralls/bluzphp/module-auth/master.svg?style=flat)](https://coveralls.io/r/bluzphp/module-auth?branch=master)
-
 [![Total Downloads](https://img.shields.io/packagist/dt/bluzphp/module-auth.svg?style=flat)](https://packagist.org/packages/bluzphp/module-auth)
 
 [![License](https://img.shields.io/packagist/l/bluzphp/module-auth.svg?style=flat)](https://packagist.org/packages/bluzphp/module-auth)

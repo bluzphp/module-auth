@@ -1,6 +1,5 @@
 # Module auth for Bluz Skeleton
-
-### Achievements
+## Achievements
 
 [![PHP >= 7.1+](https://img.shields.io/packagist/php-v/bluzphp/module-auth.svg?style=flat)](https://php.net/)
 
@@ -14,8 +13,7 @@
 
 [![License](https://img.shields.io/packagist/l/bluzphp/module-auth.svg?style=flat)](https://packagist.org/packages/bluzphp/module-auth)
 
-Usage
--------------------------
+##Usage
 ### Install module
 To install the module run the command:
 

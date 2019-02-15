@@ -29,7 +29,7 @@ script:
   - php vendor/bin/phpcs ./application --standard=PSR1,PSR2 --encoding=utf-8 --ignore=./application/_loader.php
   # Run built-in web-server
   - php vendor/bin/bluzman server:start --host 127.0.0.1 -b
-  # Run CodeCeption tests
+  # Run codeception tests
   - php vendor/bin/bluzman test module-$BLUZ_MODULE
 notifications:
   email: false

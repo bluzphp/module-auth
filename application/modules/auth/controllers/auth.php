@@ -66,7 +66,7 @@ return function ($provider = '') {
                 $authRow->token = $accessToken['access_token'];
                 $authRow->save();
                 Response::redirectTo('users', 'profile');
-            } else if ($authRow) {
+            } elseif ($authRow) {
                 // Try to login
                 $user = Users\Table::findRow($authRow->userId);
                 Auth\Table::tryLogin($user);

@@ -7,10 +7,6 @@ php:
 matrix:
   allow_failures:
     - php: master
-sudo: false
-cache:
-  directories:
-    - $HOME/.composer/cache
 env:
   - BLUZ_MODULE=auth
 before_install:

@@ -57,7 +57,7 @@ return function ($provider = '') {
                 } else {
                     // Create token and link it with user profile
                     $authRow = new Auth\Row();
-                    $authRow->userId = $this->user()->id;
+                    $authRow->userId = $this->user()->getId();
                     $authRow->provider = $provider;
                     $authRow->foreignKey = $profile->identifier;
                     $authRow->tokenSecret = $accessToken['access_token_secret'] ?? '';

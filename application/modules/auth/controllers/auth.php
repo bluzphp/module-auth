@@ -9,6 +9,8 @@ use Bluz\Proxy\Config;
 use Bluz\Proxy\Messages;
 use Bluz\Proxy\Response;
 use Bluz\Proxy\Router;
+use Hybridauth\Exception\Exception as HybridauthException;
+use Hybridauth\Hybridauth;
 
 /**
  * @param string $provider
@@ -32,7 +34,7 @@ return function ($provider = '') {
         $config['callback'] = Router::getFullUrl('auth', 'auth', ['provider' => $provider]);
 
         // Feed configuration array to Hybridauth
-        $hybridauth = new \Hybridauth\Hybridauth($config);
+        $hybridauth = new Hybridauth($config);
 
         // Attempt to authenticate users with a provider by name
         $adapter = $hybridauth->authenticate(ucfirst($provider));
@@ -80,7 +82,7 @@ return function ($provider = '') {
             // Disconnect the adapter
             $adapter->disconnect();
         }
-    } catch (\Hybridauth\Exception\Exception $e) {
+    } catch (HybridauthException $e) {
         Messages::addError($e->getMessage());
     }
     Response::redirectTo('index');

@@ -1,7 +1,9 @@
 <?php
+
 /**
  * Auth controller
  */
+
 namespace Application;
 
 use Bluz\Controller\Controller;

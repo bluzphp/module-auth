@@ -4,7 +4,6 @@
   "license": "MIT",
   "description": "bluz auth module",
   "require": {
-    "bluzphp/framework": "~7.13",
     "bluzphp/composer-plugin": "~2.4",
     "hybridauth/hybridauth": "~3.7"
   }

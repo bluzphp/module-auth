@@ -1,7 +1,9 @@
 <?php
+
 /**
  * Auth controller
  */
+
 namespace Application;
 
 use Bluz\Controller\Controller;
@@ -70,8 +72,7 @@ return function ($provider = '') {
                 Response::redirectTo('users', 'profile');
             } elseif ($authRow) {
                 // Try to login
-                $user = Users\Table::findRow($authRow->userId);
-                Auth\Table::tryLogin($user);
+                Auth\Provider\Token::login($authRow);
                 Messages::addNotice('You are signed');
             } else {
                 // User not found
